@@ -1,3 +1,4 @@
+import os
 from astropy.io import fits
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
@@ -7,7 +8,8 @@ plt.style.use(astropy_mpl_style)
 
 # the array data of each HDU is accessed with mmap
 # rather than being read into memory all at once.
-with fits.open("sample_cube.fits") as hdul:
+FITSDIR  = os.getenv('FITSDIR')
+with fits.open(FITSDIR + "/SKA_DSC2/sample_cube.fits") as hdul:
 	hdul.info()
 
 	# the cards of the file
