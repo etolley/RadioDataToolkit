@@ -6,9 +6,11 @@ import numpy as np
 from astropy.visualization import astropy_mpl_style
 plt.style.use(astropy_mpl_style)
 
+# fits file directory as defined in setup.sh
+FITSDIR  = os.getenv('FITSDIR')
+
 # the array data of each HDU is accessed with mmap
 # rather than being read into memory all at once.
-FITSDIR  = os.getenv('FITSDIR')
 with fits.open(FITSDIR + "/SKA_DSC2/sample_cube.fits") as hdul:
 	hdul.info()
 
