@@ -12,7 +12,7 @@ FITSDIR  = os.getenv('FITSDIR')
 
 # the array data of each HDU is accessed with mmap
 # rather than being read into memory all at once.
-with fits.open(FITSDIR + "/wsclean-image.fits") as hdul:
+with fits.open("/home/etolley/casacore_setup/deconv-image.fits") as hdul:
 	hdul.info()
 
 	# the cards of the file
@@ -28,4 +28,5 @@ with fits.open(FITSDIR + "/wsclean-image.fits") as hdul:
 	plt.colorbar()
 	plt.xlabel(hdul[0].header["CTYPE1"])
 	plt.ylabel(hdul[0].header["CTYPE2"])
+	plt.savefig("mygraph.png")
 	plt.show()
