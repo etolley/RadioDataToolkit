@@ -7,12 +7,18 @@ from astropy.visualization import astropy_mpl_style
 from matplotlib.colors import LogNorm
 plt.style.use(astropy_mpl_style)
 
-# fits file directory as defined in setup.sh
-FITSDIR  = os.getenv('FITSDIR')
+if len(sys.argv) > 2:
+    print("Program does not understand extra arguments. Expected input:\npython examine_fits_file.py {file_name} ")
+    sys.exit()
+elif len(sys.argv) > 1:
+    file_name = sys.argv[1]
+else:
+    print("No input file received. Expected input:\npython examine_fits_file.py {file_name} ")
+    sys.exit()
 
 # the array data of each HDU is accessed with mmap
 # rather than being read into memory all at once.
-with fits.open("/home/etolley/casacore_setup/deconv-image.fits") as hdul:
+with fits.open(file_name) as hdul:
 	hdul.info()
 
 	# the cards of the file
